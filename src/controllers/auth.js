@@ -30,7 +30,6 @@ exports.signin = (req, res) => {
     if (!error) {
       if (results.length > 0) {
         const user = results[0];
-        console.log(user);
         const userId = user.id;
         const compare = await bcrypt.compare(password, user.password);
 

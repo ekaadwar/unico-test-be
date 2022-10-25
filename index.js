@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const routeAuth = require("./src/routes/auth");
+const routeUsers = require("./src/routes/users");
 
 const { APP_UPLOAD_ROUTE, APP_UPLOAD_PATH } = process.env;
 const port = process.env.PORT || 8080;
@@ -19,6 +20,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/auth", routeAuth);
+app.use("/users", routeUsers);
 
 app.listen(port, () => {
   console.log(`App is running in port ${port}`);

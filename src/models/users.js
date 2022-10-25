@@ -22,3 +22,16 @@ exports.getUserByEmail = (email, cb) => {
   console.log(sql);
   connection.query(sql, [email], cb);
 };
+
+exports.getUserByCond = (cb) => {
+  connection.query(
+    `
+  SELECT 
+    ${table}.id,
+    ${table}.email,
+    ${table}.first_name AS firstName,
+    ${table}.last_name AS lastName
+  FROM ${table}`,
+    cb
+  );
+};

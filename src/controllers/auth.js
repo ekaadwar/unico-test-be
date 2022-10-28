@@ -21,7 +21,6 @@ exports.signup = async (req, res) => {
 
 exports.signin = (req, res) => {
   const { email, password } = req.body;
-  console.log("login oke");
   modelUsers.getUserByEmail(email, async (error, results) => {
     if (!error) {
       if (results.length > 0) {

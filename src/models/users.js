@@ -19,7 +19,6 @@ exports.getUserByEmail = (email, cb) => {
     FROM ${table}
     WHERE ${table}.email='${email}'
   `;
-  console.log(sql);
   connection.query(sql, cb);
 };
 

@@ -16,3 +16,19 @@ exports.getUsers = (req, res) => {
     }
   });
 };
+
+exports.getProfile = (req, res) => {
+  const id = req.authUser.id;
+  modelUsers.getUserById(id, (error, results) => {
+    if (!error) {
+      return response(res, 200, true, "Get profile successfuly!", results[0]);
+    } else {
+      return response(
+        res,
+        404,
+        false,
+        `Data not found! error : ${error.sqlMessage}`
+      );
+    }
+  });
+};

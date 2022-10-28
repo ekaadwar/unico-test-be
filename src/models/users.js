@@ -35,3 +35,18 @@ exports.getUserByCond = (cb) => {
     cb
   );
 };
+
+exports.getUserById = (id, cb) => {
+  connection.query(
+    `
+      SELECT 
+        ${table}.id,
+        ${table}.first_name as firstName,
+        ${table}.last_name as lastName,
+        ${table}.email
+      FROM ${table}
+      WHERE ${table}.id=${id}
+    `,
+    cb
+  );
+};

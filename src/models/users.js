@@ -17,10 +17,10 @@ exports.getUserByEmail = (email, cb) => {
   const sql = `
     SELECT ${table}.id, ${table}.email, ${table}.password, ${table}.first_name AS firstName, ${table}.last_name AS lastName
     FROM ${table}
-    WHERE ${table}.email=?
+    WHERE ${table}.email='${email}'
   `;
   console.log(sql);
-  connection.query(sql, [email], cb);
+  connection.query(sql, cb);
 };
 
 exports.getUserByCond = (cb) => {

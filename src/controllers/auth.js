@@ -11,12 +11,7 @@ exports.signup = async (req, res) => {
       if (!error) {
         return response(res, 200, true, "Register successfully");
       } else {
-        return response(
-          res,
-          500,
-          false,
-          `Register failed! Error : ${error.sqlMessage}. sql : ${error.sql}`
-        );
+        return response(res, 500, false, error);
       }
     });
   } else {
@@ -26,6 +21,7 @@ exports.signup = async (req, res) => {
 
 exports.signin = (req, res) => {
   const { email, password } = req.body;
+  console.log("login oke");
   modelUsers.getUserByEmail(email, async (error, results) => {
     if (!error) {
       if (results.length > 0) {
